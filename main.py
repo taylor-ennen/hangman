@@ -1,67 +1,9 @@
 import random
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
-
+import hangman_art
+import hangman_words
 
 word_list = ["aardvark", "baboon", "camel"]
 chosen_word = random.choice(word_list)
-
-def check_guess():
-	return chosen_word.count(guess)
 
 #Testing code
 #print(f'Pssst, the solution is {chosen_word}.')
@@ -74,7 +16,7 @@ print(display)
 lives = 6
 
 while not solved:
-	print(stages[lives])
+	print(hangman_art.stages[lives])
 	if lives == 0:
 		print("You lost though. Why did you do this though?")
 		solved = True

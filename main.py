@@ -1,27 +1,44 @@
 import random
 import hangman_art
 import hangman_words
+import time
+import os
 
-word_list = ["aardvark", "baboon", "camel"]
-chosen_word = random.choice(word_list)
+
+def clearConsole():
+    command = 'clear'
+    if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
+        command = 'cls'
+    os.system(command)
+
+clearConsole()
+
+chosen_word = random.choice(hangman_words.word_list)
+lives = 6
 
 #Testing code
 #print(f'Pssst, the solution is {chosen_word}.')
+
 display = ""
 x = -1
 solved = False
 for char in chosen_word:
 	display += "_"
+
+print(hangman_art.logo)
+time.sleep(5)
 print(display)
-lives = 6
 
 while not solved:
+	clearConsole()
+	print(display)
 	print(hangman_art.stages[lives])
 	if lives == 0:
-		print("You lost though. Why did you do this though?")
+		print(f"You lost though. Why did you do this though? The word was {chosen_word}.")
 		solved = True
 	if lives !=0:
 		guess = input("Guess a letter: ").lower()
+		
 		x = -1
 		correct = False
 	for letter in chosen_word:
